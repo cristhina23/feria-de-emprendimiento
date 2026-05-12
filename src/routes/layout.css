@@ -1,0 +1,267 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--font-display: 'Inter', 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+	font-family:
+		Inter,
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		sans-serif;
+	color: #1f2937;
+	background: #fff9f0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background:
+		radial-gradient(circle at 15% 10%, rgba(255, 217, 102, 0.24), transparent 28%),
+		linear-gradient(180deg, #fff9f0 0%, #fefefb 48%, #fff9f0 100%);
+}
+
+button,
+a,
+input {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.container {
+	width: min(1120px, calc(100% - 32px));
+	margin-inline: auto;
+}
+
+.glass-panel {
+	border: 1px solid rgba(255, 255, 255, 0.58);
+	background: rgba(254, 254, 251, 0.72);
+	box-shadow: 0 24px 80px rgba(38, 117, 53, 0.12);
+	backdrop-filter: blur(18px);
+}
+
+.cta-button {
+	min-height: 56px;
+	align-items: center;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #ffd966, #f4c542 48%, #e0a800);
+	padding: 0.95rem 1.45rem;
+	font-weight: 900;
+	color: #267535;
+	box-shadow: 0 18px 45px rgba(224, 168, 0, 0.32);
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		filter 180ms ease;
+}
+
+.cta-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 24px 55px rgba(224, 168, 0, 0.42);
+	filter: saturate(1.07);
+}
+
+.cta-button:disabled {
+	cursor: not-allowed;
+	opacity: 0.7;
+	transform: none;
+}
+
+.calendar-button {
+	display: inline-flex;
+	min-height: 52px;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	border-radius: 999px;
+	border: 1px solid rgba(51, 148, 68, 0.22);
+	background: rgba(254, 254, 251, 0.78);
+	padding: 0.85rem 1.1rem;
+	font-weight: 900;
+	color: #267535;
+	box-shadow: 0 16px 36px rgba(38, 117, 53, 0.11);
+	backdrop-filter: blur(16px);
+	transition:
+		transform 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.calendar-button:hover {
+	transform: translateY(-2px);
+	border-color: rgba(244, 197, 66, 0.7);
+	box-shadow: 0 22px 46px rgba(38, 117, 53, 0.16);
+}
+
+.hero-card,
+.registration-card,
+.success-card,
+.story-panel,
+.benefit-card,
+.showcase-card,
+.image-card,
+.map-card {
+	border: 1px solid rgba(255, 255, 255, 0.72);
+	background: rgba(254, 254, 251, 0.82);
+	box-shadow: 0 28px 80px rgba(38, 117, 53, 0.14);
+	backdrop-filter: blur(20px);
+}
+
+.hero-card {
+	position: relative;
+	border-radius: 2.25rem;
+	padding: 1rem;
+}
+
+.feature-tile {
+	border-radius: 1.7rem;
+	background: rgba(255, 249, 240, 0.88);
+	padding: 1.25rem;
+	font-weight: 900;
+	color: #267535;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.section-band {
+	padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.story-panel {
+	border-radius: 2rem;
+	padding: clamp(1.4rem, 4vw, 2.4rem);
+}
+
+.image-card,
+.map-card {
+	overflow: hidden;
+	border-radius: 2rem;
+}
+
+.image-card {
+	padding: clamp(0.65rem, 2vw, 1rem);
+}
+
+.image-card img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 1.5rem;
+}
+
+.map-card {
+	min-height: 420px;
+	padding: 0.65rem;
+}
+
+.map-card iframe {
+	display: block;
+	width: 100%;
+	height: min(62vh, 520px);
+	min-height: 380px;
+	border: 0;
+	border-radius: 1.5rem;
+}
+
+.benefit-card,
+.showcase-card {
+	border-radius: 1.5rem;
+	padding: 1.25rem;
+	transition:
+		transform 220ms ease,
+		box-shadow 220ms ease,
+		border-color 220ms ease;
+}
+
+.benefit-card:hover,
+.showcase-card:hover {
+	transform: translateY(-7px);
+	border-color: rgba(244, 197, 66, 0.72);
+	box-shadow: 0 32px 90px rgba(38, 117, 53, 0.2);
+}
+
+.showcase-card {
+	animation: riseIn 650ms ease both;
+	animation-delay: var(--delay);
+}
+
+.registration-card,
+.success-card {
+	border-radius: 2rem;
+	padding: clamp(1.2rem, 4vw, 2rem);
+}
+
+.success-card {
+	text-align: center;
+}
+
+.field-label {
+	display: block;
+	margin-bottom: 0.55rem;
+	font-size: 0.9rem;
+	font-weight: 900;
+	color: #267535;
+}
+
+.field-input {
+	width: 100%;
+	border-radius: 1.1rem;
+	border: 1px solid rgba(51, 148, 68, 0.22);
+	background: rgba(255, 249, 240, 0.84);
+	padding: 0.95rem 1rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #1f2937;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.field-input:focus {
+	border-color: #f4c542;
+	box-shadow: 0 0 0 4px rgba(244, 197, 66, 0.2);
+	outline: none;
+}
+
+.animate-rise {
+	animation: riseIn 700ms ease both;
+}
+
+.animate-float {
+	animation: floatSoft 6s ease-in-out infinite;
+}
+
+@keyframes riseIn {
+	from {
+		transform: translateY(22px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes floatSoft {
+	50% {
+		transform: translateY(-14px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

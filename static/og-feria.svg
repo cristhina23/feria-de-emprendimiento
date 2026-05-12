@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#339444"/>
+      <stop offset="0.6" stop-color="#267535"/>
+      <stop offset="1" stop-color="#6BCB77"/>
+    </linearGradient>
+    <radialGradient id="light" cx="80%" cy="20%" r="60%">
+      <stop offset="0" stop-color="#FFD966" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFD966" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#FFF9F0"/>
+  <rect x="42" y="42" width="1116" height="546" rx="54" fill="url(#g)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="54" fill="url(#light)"/>
+  <circle cx="1010" cy="120" r="72" fill="#F4C542" opacity="0.9"/>
+  <circle cx="170" cy="500" r="96" fill="#6BCB77" opacity="0.38"/>
+  <path d="M170 145c52-50 116-54 174-12-63 7-109 34-139 82-16-16-27-39-35-70Z" fill="#FFD966" opacity="0.85"/>
+  <text x="115" y="245" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#FFD966" letter-spacing="5">FERIA SUD</text>
+  <text x="115" y="335" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="900" fill="#FEFEFB">Feria de Emprendimiento</text>
+  <text x="115" y="420" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="900" fill="#FEFEFB">Expo y Networking</text>
+  <text x="115" y="493" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#FFF9F0">Sábado 16 de Mayo - 5:00 PM</text>
+</svg>
