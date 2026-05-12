@@ -1,4 +1,5 @@
-import { createParticipant } from '$services/participants';
+import { createParticipant, hasSheetsConfig } from '$services/participants';
+import { isValidWhatsapp } from '$utils/code';
 import { json } from '@sveltejs/kit';
 
 export async function POST({ request }) {
@@ -8,10 +9,28 @@ export async function POST({ request }) {
 		attendance?: boolean;
 	};
 
-	if (!body.fullName?.trim() || !body.whatsapp?.trim() || !body.attendance) {
+	if (!body.fullName?.trim() || !body.whatsapp?.trim()) {
 		return json(
-			{ message: 'Por favor complete su nombre, WhatsApp y confirme su asistencia.' },
+			{ message: 'Debe poner su nombre y número de teléfono.' },
 			{ status: 400 }
+		);
+	}
+
+	if (!isValidWhatsapp(body.whatsapp)) {
+		return json(
+			{ message: 'Ingrese su número de teléfono con 9 dígitos, por ejemplo 949807845.' },
+			{ status: 400 }
+		);
+	}
+
+	if (!body.attendance) {
+		return json({ message: 'Por favor confirme su asistencia.' }, { status: 400 });
+	}
+
+	if (!hasSheetsConfig()) {
+		return json(
+			{ message: 'El registro no está conectado a Google Sheets. Avise a un organizador.' },
+			{ status: 500 }
 		);
 	}
 

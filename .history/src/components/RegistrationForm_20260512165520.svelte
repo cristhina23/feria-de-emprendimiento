@@ -108,7 +108,7 @@
 			aria-invalid={Boolean(error && !isValidWhatsapp(whatsapp))}
 		/>
 		<p id="whatsapp-help" class="mt-2 text-sm font-semibold text-slate-600">
-			Escriba solo los 9 dígitos de su celular, sin +51. Ejemplo: 909909909.
+			Escriba solo los 9 dígitos de su celular, sin +51. Ejemplo: 909807845.
 		</p>
 
 		<label

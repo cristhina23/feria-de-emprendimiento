@@ -33,7 +33,7 @@ const demoStore: Participant[] = [
 	}
 ];
 
-function hasSheetsConfig() {
+export function hasSheetsConfig() {
 	return Boolean(
 		env.GOOGLE_SHEETS_ID &&
 		env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&

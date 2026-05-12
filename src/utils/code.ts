@@ -1,8 +1,19 @@
 export function normalizeWhatsapp(value: string) {
-	return value
-		.replace(/[^\d+]/g, '')
-		.replace(/^00/, '+')
-		.trim();
+	const digits = value.trim().replace(/\D/g, '');
+
+	if (digits.startsWith('0051') && digits.length === 13) {
+		return digits.slice(4);
+	}
+
+	if (digits.startsWith('51') && digits.length === 11) {
+		return digits.slice(2);
+	}
+
+	return digits;
+}
+
+export function isValidWhatsapp(value: string) {
+	return /^9\d{8}$/.test(normalizeWhatsapp(value));
 }
 
 export function generateParticipationCode(existingCodes = new Set<string>()) {
