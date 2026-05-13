@@ -350,38 +350,28 @@
 			<RegistrationForm />
 		</div>
 	</section>
-	<footer class="border-t border-white/10 bg-[#14532d] px-6 py-5">
-	<div
-		class="flex flex-wrap items-center justify-center gap-2 text-center text-sm font-medium text-white/85"
-	>
-		<span>
-			© {new Date().getFullYear()} Feria de Emprendimiento SUD
+	<footer class="mt-16 border-t border-white/10 bg-green-950 px-6 py-6 text-center text-sm text-white">
+	<p class="flex flex-wrap items-center justify-center gap-1">
+		<span>© {new Date().getFullYear()} Feria de Emprendimiento SUD ·</span>
+
+		<span>Esta página fue hecha con mucho</span>
+
+		<span
+			class="inline-block animate-pulse text-2xl text-red-500 drop-shadow-[0_0_10px_rgba(255,0,76,0.9)]"
+		>
+			❤️
 		</span>
 
-		<span class="text-white/40">•</span>
-
-		<span class="text-emerald-200">
-			Hecho con mucho
-		</span>
-
-		<Heart
-			class="h-5 w-5 animate-pulse fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]"
-		/>
-
-		
-
-		<span class="text-white/70">
-			por
-		</span>
+		<span>por</span>
 
 		<a
-			href="https://cctechsolutions.dev"
+			href="https://tu-link.com"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="font-bold text-yellow-400 transition hover:text-white"
+			class="font-bold text-yellow-400 transition duration-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
 		>
 			CC Tech Solutions
 		</a>
-	</div>
+	</p>
 </footer>
 </main>

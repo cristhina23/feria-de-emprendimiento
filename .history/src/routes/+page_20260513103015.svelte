@@ -350,35 +350,35 @@
 			<RegistrationForm />
 		</div>
 	</section>
-	<footer class="border-t border-white/10 bg-[#14532d] px-6 py-5">
+	<footer class="mt-20 border-t border-white/10 bg-white px-6 py-6">
 	<div
-		class="flex flex-wrap items-center justify-center gap-2 text-center text-sm font-medium text-white/85"
+		class="flex flex-wrap items-center justify-center gap-2 text-center text-sm font-medium"
 	>
-		<span>
-			© {new Date().getFullYear()} Feria de Emprendimiento SUD
+		<span class="text-gray-700">
+			© {new Date().getFullYear()} Feria de Emprendimiento SUD ·
 		</span>
 
-		<span class="text-white/40">•</span>
-
-		<span class="text-emerald-200">
-			Hecho con mucho
+		<span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+			Esta página fue hecha con mucho
 		</span>
 
-		<Heart
-			class="h-5 w-5 animate-pulse fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]"
-		/>
+		<div class="relative">
+			<Heart
+				class="h-6 w-6 animate-pulse fill-red-500 text-red-500 drop-shadow-[0_0_12px_rgba(255,0,76,0.9)]"
+			/>
+		</div>
 
-		
-
-		<span class="text-white/70">
-			por
+		<span class="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 bg-clip-text font-extrabold text-transparent">
+			amor
 		</span>
+
+		<span class="text-gray-700">por</span>
 
 		<a
-			href="https://cctechsolutions.dev"
+			href="https://tu-link.com"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="font-bold text-yellow-400 transition hover:text-white"
+			class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-lg font-black text-transparent transition duration-300 hover:scale-105"
 		>
 			CC Tech Solutions
 		</a>

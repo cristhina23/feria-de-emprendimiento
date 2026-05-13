@@ -368,7 +368,9 @@
 			class="h-5 w-5 animate-pulse fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]"
 		/>
 
-		
+		<span class="font-semibold text-yellow-300">
+			amor
+		</span>
 
 		<span class="text-white/70">
 			por
