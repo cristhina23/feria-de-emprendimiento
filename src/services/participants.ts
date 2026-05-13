@@ -33,12 +33,16 @@ const demoStore: Participant[] = [
 	}
 ];
 
+function cleanEnvValue(value?: string) {
+	return value?.trim().replace(/^["']|["']$/g, '') ?? '';
+}
+
 export function hasSheetsConfig() {
 	return Boolean(
-		env.GOOGLE_SHEETS_ID &&
-		env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
-		env.GOOGLE_PRIVATE_KEY &&
-		env.GOOGLE_SHEETS_RANGE
+		cleanEnvValue(env.GOOGLE_SHEETS_ID) &&
+		cleanEnvValue(env.GOOGLE_SERVICE_ACCOUNT_EMAIL) &&
+		cleanEnvValue(env.GOOGLE_PRIVATE_KEY) &&
+		cleanEnvValue(env.GOOGLE_SHEETS_RANGE)
 	);
 }
 

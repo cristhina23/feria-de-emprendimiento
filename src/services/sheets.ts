@@ -4,8 +4,28 @@ import type { Participant } from './participants';
 const tokenUrl = 'https://oauth2.googleapis.com/token';
 const scope = 'https://www.googleapis.com/auth/spreadsheets';
 
+function cleanEnvValue(value?: string) {
+	return value?.trim().replace(/^["']|["']$/g, '') ?? '';
+}
+
+function getSheetId() {
+	const value = cleanEnvValue(env.GOOGLE_SHEETS_ID);
+	const match = value.match(/\/spreadsheets\/d\/([^/]+)/);
+
+	return match?.[1] ?? value;
+}
+
+function getSheetRange() {
+	return cleanEnvValue(env.GOOGLE_SHEETS_RANGE) || 'Participants!A:E';
+}
+
 function base64Url(input: string | Buffer) {
 	return Buffer.from(input).toString('base64url');
+}
+
+async function googleError(response: Response, action: string) {
+	const detail = await response.text();
+	throw new Error(`${action} failed: ${response.status}${detail ? ` - ${detail}` : ''}`);
 }
 
 async function getAccessToken() {
@@ -13,7 +33,7 @@ async function getAccessToken() {
 	const header = base64Url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
 	const claimSet = base64Url(
 		JSON.stringify({
-			iss: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+			iss: cleanEnvValue(env.GOOGLE_SERVICE_ACCOUNT_EMAIL),
 			scope,
 			aud: tokenUrl,
 			exp: now + 3600,
@@ -22,7 +42,7 @@ async function getAccessToken() {
 	);
 
 	const { createSign } = await import('node:crypto');
-	const privateKey = env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n') ?? '';
+	const privateKey = cleanEnvValue(env.GOOGLE_PRIVATE_KEY).replace(/\\n/g, '\n');
 	const signer = createSign('RSA-SHA256');
 	signer.update(`${header}.${claimSet}`);
 	const signature = signer.sign(privateKey, 'base64url');
@@ -38,7 +58,7 @@ async function getAccessToken() {
 	});
 
 	if (!response.ok) {
-		throw new Error(`Google auth failed: ${response.status}`);
+		await googleError(response, 'Google auth');
 	}
 
 	const data = (await response.json()) as { access_token: string };
@@ -63,15 +83,15 @@ function mapRow(row: string[]): Participant | null {
 
 export async function readParticipantsFromSheet() {
 	const token = await getAccessToken();
-	const sheetId = env.GOOGLE_SHEETS_ID;
-	const range = encodeURIComponent(env.GOOGLE_SHEETS_RANGE ?? 'Participants!A:E');
+	const sheetId = getSheetId();
+	const range = encodeURIComponent(getSheetRange());
 	const response = await fetch(
 		`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}`,
 		{ headers: { authorization: `Bearer ${token}` } }
 	);
 
 	if (!response.ok) {
-		throw new Error(`Google Sheets read failed: ${response.status}`);
+		await googleError(response, 'Google Sheets read');
 	}
 
 	const data = (await response.json()) as { values?: string[][] };
@@ -85,8 +105,8 @@ export async function readParticipantsFromSheet() {
 
 export async function appendParticipantToSheet(participant: Participant) {
 	const token = await getAccessToken();
-	const sheetId = env.GOOGLE_SHEETS_ID;
-	const range = encodeURIComponent(env.GOOGLE_SHEETS_RANGE ?? 'Participants!A:E');
+	const sheetId = getSheetId();
+	const range = encodeURIComponent(getSheetRange());
 	const response = await fetch(
 		`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`,
 		{
@@ -110,6 +130,6 @@ export async function appendParticipantToSheet(participant: Participant) {
 	);
 
 	if (!response.ok) {
-		throw new Error(`Google Sheets append failed: ${response.status}`);
+		await googleError(response, 'Google Sheets append');
 	}
 }
