@@ -76,7 +76,7 @@
 </svelte:head>
 
 <main class="overflow-hidden bg-[#FFF9F0] text-[#1F2937]">
-	<section class="relative min-h-screen pt-6 pb-16 sm:pt-10">
+	<section class="relative pt-4 pb-12 sm:pt-10 sm:pb-16 lg:min-h-screen">
 		<DecorativeBackdrop />
 		<div class="relative z-10 container">
 			<nav class="glass-panel flex items-center justify-between rounded-full px-4 py-3">
@@ -100,41 +100,42 @@
 			</nav>
 
 			<div
-				class="grid min-h-[calc(100vh-96px)] items-center gap-10 py-10 lg:grid-cols-[1.05fr_0.95fr]"
+				class="grid items-center gap-8 py-8 sm:py-10 lg:min-h-[calc(100vh-96px)] lg:grid-cols-[1.05fr_0.95fr]"
 			>
 				<div class="animate-rise">
 					<p
-						class="mb-5 inline-flex items-center gap-2 rounded-full border border-[#F4C542]/50 bg-[#FEFEFB]/75 px-4 py-2 text-sm font-bold text-[#267535] shadow-sm backdrop-blur"
+						class="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#F4C542]/50 bg-[#FEFEFB]/75 px-3 py-2 text-xs font-bold text-[#267535] shadow-sm backdrop-blur sm:mb-5 sm:px-4 sm:text-sm"
 					>
 						<Sparkles size={16} /> Sábado 16 de Mayo - 5:00 PM
 					</p>
 					<h1
-						class="max-w-4xl font-display text-5xl leading-[0.98] font-black text-[#1F2937] sm:text-6xl lg:text-7xl"
+						class="max-w-4xl font-display text-4xl leading-[1.04] font-black text-[#1F2937] sm:text-6xl lg:text-7xl"
 					>
 						Feria de Emprendimiento, Expo y Networking
 					</h1>
-					<p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">
+					<p
+						class="mt-5 max-w-2xl text-base leading-7 text-slate-700 sm:mt-6 sm:text-xl sm:leading-8"
+					>
 						Conecta con emprendedores, descubre talentos y participa por premios especiales.
 					</p>
 
 					<div class="mt-7 grid gap-3 text-sm font-bold text-slate-700 sm:max-w-xl sm:grid-cols-2">
-						<div class="glass-panel flex items-center gap-3 rounded-3xl p-4">
-							<CalendarDays class="text-[#339444]" size={22} />
+						<div class="glass-panel flex min-w-0 items-center gap-3 rounded-3xl p-4">
+							<CalendarDays class="shrink-0 text-[#339444]" size={22} />
 							<span>Sábado 16 de Mayo - 5:00 PM</span>
 						</div>
-						<div class="glass-panel flex items-center gap-3 rounded-3xl p-4">
-							<MapPin class="text-[#E0A800]" size={22} />
+						<div class="glass-panel flex min-w-0 items-center gap-3 rounded-3xl p-4">
+							<MapPin class="shrink-0 text-[#E0A800]" size={22} />
 							<span>Capilla de La Iglesia de Jesucristo de los Santos de los Últimos Días</span>
 						</div>
 					</div>
-					<div class="mt-3 flex flex-col gap-3 sm:flex-row">
-					<a class="cta-button mt-8 inline-flex w-full justify-center sm:w-auto" href="#registro">
-						Confirmar Asistencia
-					</a>
-					
-						
+					<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+						<a class="cta-button inline-flex w-full justify-center sm:w-auto" href="#registro">
+							Confirmar Asistencia
+						</a>
+
 						<a
-							class="calendar-button  mt-8 inline-flex w-full justify-center sm:w-auto"
+							class="calendar-button inline-flex w-full justify-center sm:w-auto"
 							href={googleCalendarUrl}
 							target="_blank"
 							rel="noreferrer"
@@ -149,7 +150,7 @@
 				<div class="animate-float relative">
 					<div class="hero-card">
 						<div
-							class="absolute -top-5 -right-5 rounded-3xl bg-[#F4C542] p-4 text-[#267535] shadow-2xl shadow-[#F4C542]/30"
+							class="absolute top-3 right-3 rounded-3xl bg-[#F4C542] p-3 text-[#267535] shadow-2xl shadow-[#F4C542]/30 sm:-top-5 sm:-right-5 sm:p-4"
 						>
 							<Gift size={32} />
 						</div>
@@ -158,7 +159,9 @@
 								class="feature-tile col-span-2 min-h-36 bg-gradient-to-br from-[#339444] to-[#267535] text-[#FEFEFB]"
 							>
 								<Users size={34} />
-								<p class="mt-4 text-2xl font-black">Una comunidad que impulsa talentos</p>
+								<p class="mt-4 pr-14 text-xl font-black sm:pr-0 sm:text-2xl">
+									Una comunidad que impulsa talentos
+								</p>
 							</div>
 							<div class="feature-tile">
 								<Store class="text-[#339444]" size={30} />
@@ -192,7 +195,13 @@
 						hogares.
 					</p>
 				</div>
-				<div class="story-panel bg-gradient-to-br from-[#339444] to-[#267535] text-[#FEFEFB]">
+				<div class="story-panel support-panel overflow-hidden text-[#FEFEFB]">
+					<img
+						class="mx-auto mb-5 w-full max-w-[210px]"
+						src="/supporting-people.svg"
+						alt="Dos personas apoyándose en comunidad"
+						loading="lazy"
+					/>
 					<HandHeart size={38} />
 					<p class="mt-5 text-2xl font-black">Apoyar a uno fortalece a muchos.</p>
 				</div>
@@ -285,7 +294,7 @@
 					</div>
 					<div class="flex flex-col gap-3 sm:flex-row">
 						<a
-							class="calendar-button  mt-8 inline-flex w-full justify-center sm:w-auto"
+							class="calendar-button mt-8 inline-flex w-full justify-center sm:w-auto"
 							href={googleCalendarUrl}
 							target="_blank"
 							rel="noreferrer"
@@ -295,7 +304,7 @@
 							Google Calendar
 						</a>
 						<a
-							class="calendar-button  mt-8 inline-flex w-full justify-center sm:w-auto"
+							class="calendar-button mt-8 inline-flex w-full justify-center sm:w-auto"
 							href="https://www.google.com/maps/search/?api=1&query=The%20Church%20of%20Jesus%20Christ%20of%20Latter-day%20Saints%20-12.234311499897702,-76.96175910422663"
 							target="_blank"
 							rel="noreferrer"
